@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Simulador de Conejos</title>
+</head>
+
+<body>
+
+    <!-- <nav>
+        <div>
+            <img src="" alt="" srcset="">
+        </div>
+    </nav> -->
+
+    <main>
+
+        <div class="header">
+            <h1><i class="icon-hover fa-solid fa-tractor"></i> Granja Maria</h1>
+            <h2 id="monthName">Enero</h2>
+        </div>
+
+
+        <div class="farm">
+            <div class="female">
+
+                <h3>Conejos Madre: <span class="number" data-number="0">0</span></h3>
+                <div class="farm-container">
+                    <i class="more fa-solid fa-square-plus fa-2x"></i>
+                    <img src="media/rabbit.png" alt="">
+
+                    <img src="media/rabbit.png" alt="">
+
+                    <img src="media/rabbit.png" alt="">
+                </div>
+
+            </div>
+
+            <div class="small">
+
+                <h3>Conejos Pequeños: <span class="number" data-number="0">0</span></h3>
+                <div class="farm-container">
+                    <i class="more fa-solid fa-square-plus fa-2x"></i>
+                    <img src="media/rabbit.png" alt="">
+
+                </div>
+            </div>
+
+            <div class="big">
+
+                <h3>Conejos Grandes: <span class="number" data-number="0">0</span></h3>
+                <div class="farm-container">
+                    <i class="more fa-solid fa-square-plus fa-2x"></i>
+                    <img src="media/rabbit.png" alt="">
+
+                </div>
+            </div>
+
+
+
+            <input type="range" name="month" id="month" orient="vertical" min="0" max="120" value="90" step="10" />
+
+
+        </div>
+
+        <button class="button" id="button">Calcular</button>
+
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

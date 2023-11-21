@@ -1,0 +1,138 @@
+:root {
+    --font-title: 'Alegreya', serif;
+    --font-text: 'Pridi', serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-text);
+    margin: 0px;
+    background-color: #96E8F6;
+}
+
+h1 {
+    font-size: 4rem;
+    padding-bottom: 0px;
+    margin-bottom: -15px;
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-title);
+    color: white;
+}
+
+main {
+    margin-top: 15vh;
+    padding: 20px;
+    background-color: #53B270;
+    height: 85vh;
+    text-align: center;
+}
+
+/* header */
+
+.header {
+    width: 100%;
+    padding-left: 50px;
+    text-align: left;
+}
+
+.icon-hover {
+    transition: color .3s ease-in;
+    cursor: pointer;
+}
+
+.icon-hover:hover {
+    color: #FFB000;
+}
+
+/* Rabbits */
+
+main>.farm {
+    height: 70%;
+    padding: 0px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+
+}
+
+.farm>div {
+    width: 32%;
+    height: 100%;
+}
+
+.farm-container {
+    border: 2px solid brown;
+    position: relative;
+    height: 90%;
+}
+
+.farm-container img {
+    width: 70px;
+    /* position: absolute; */
+}
+
+.more {
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    cursor: pointer;
+    color: rgba(245, 245, 245, 0.63);
+    transition: color .3s ease-in, transform .2s ease-in;
+    z-index: 5;
+}
+
+.more:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+/* input */
+
+input[type=range][orient=vertical] {
+    writing-mode: vertical-lr;
+    width: 10px;
+    height: 75%;
+    padding: 0 5px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+
+.button {
+    font-family: var(--font-title);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: white;
+    border-radius: 5px;
+    padding: 7px 12px;
+    border: none;
+    cursor: pointer;
+    transition: color .3s ease-in;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.button:hover {
+
+    color: white;
+    background: rgb(29, 29, 29);
+}
