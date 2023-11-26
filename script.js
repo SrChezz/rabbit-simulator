@@ -1,141 +1,175 @@
-let month = document.getElementById('month');
+// Calculation Starter
+let settings = document.getElementById('settings');
+let settingsMenu = document.getElementById('setting-menu');
+let calButton = document.getElementById('cal-button');
 
-let monthName = document.getElementById('monthName');
+// Rabbit Container
+let rabbitContainer = document.getElementById('container');
 
-let moreButtons = document.querySelectorAll('.more');
+// Updating data
+let rabbitNumber = document.getElementById('number');
+let rabbitFemale = document.getElementById('female');
+let rabbitMale = document.getElementById('male');
+let rabbitSmall = document.getElementById('small');
+let rabbitLimit = document.getElementById('limit');
+let rabbitMonths = document.querySelectorAll('.months-container>div');
+let rabbitRate = document.getElementById('rate');
+let rabbitMoney = document.getElementById('money');
 
-let mainButton = document.getElementById('button');
+// Data 
+let data = {}
+let months = {
+    conejosAntes: [],
+    conejosDespues: [],
+    ventas: []
+}
 
-
-let mothers = 0;
-let big = 0;
-let small = 0;
-
-let monthsCalculations = []
-
-month.addEventListener('input', () => {
-    switch (month.value) {
-        case '120':
-            monthName.textContent = 'Enero';
-            break;
-        case '110':
-            monthName.textContent = 'Febrero';
-            break;
-        case '100':
-            monthName.textContent = 'Marzo';
-            break;
-        case '90':
-            monthName.textContent = 'Abril';
-            break;
-        case '80':
-            monthName.textContent = 'Mayo';
-            break;
-        case '70':
-            monthName.textContent = 'Junio';
-            break;
-        case '60':
-            monthName.textContent = 'Julio';
-            break;
-        case '50':
-            monthName.textContent = 'Agosto';
-            break;
-        case '40':
-            monthName.textContent = 'Septiembre';
-            break;
-        case '30':
-            monthName.textContent = 'Octubre';
-            break;
-        case '20':
-            monthName.textContent = 'Noviembre';
-            break;
-        case '10':
-            monthName.textContent = 'Diciembre';
-            break;
-        default:
-            console.log('this is anything')
-            console.log(month.value);
-            break;
-    }
+settings.addEventListener('click', () => {
+    settingsMenu.style.display = 'block';
 })
 
-moreButtons.forEach(moreButton => {
-    moreButton.addEventListener('click', () => {
-        let container = moreButton.parentNode;
+calButton.addEventListener('click', (event) => {
+    event.preventDefault();
 
-        let number = container.parentNode.querySelector('.number');
+    let inputData = document.querySelectorAll('input');
+    inputData.forEach(input => {
+        let dataName = input.getAttribute('data-name');
+        let value = input.value;
+        data[dataName] = value;
+    });
 
-        let newRabbit = document.createElement('img');
-        newRabbit.setAttribute('src', 'media/rabbit.png');
+    data.cantidad = Number(data.conejos) + Number(data.conejas) + Number(data.gazapos);
+    data.ventas = data.ventas.split(',').map(Number);
+    data.money = data.ventas.reduce((a, b) => a + b, 0) * 25
+    data.k = Number(data.k);
+    data.maximo = Number(data.maximo);
 
-        // Generar coordenadas aleatorias dentro de los límites del contenedor
-        let maxX = container.offsetWidth;
-        let maxY = container.offsetHeight;
+    console.log(data);
+    settingsMenu.style.display = 'none';
+
+    calculateValues();
+    populateValues();
+    ajustarConejos(data.cantidad);
+});
 
 
 
-        let randomX = Math.floor(Math.random() * maxX);
-        let randomY = Math.floor(Math.random() * maxY);
+function calculateValues() {
+    let ventas = data.ventas;
+    let pmaximo = data.maximo;
+
+    let k = data.k;
+    let t = 1;
+
+    let conejosActuales = data.cantidad;
+
+    for (let i = 0; i < ventas.length; i++) {
+        console.log(i + 1);
+        months.conejosAntes.push(conejosActuales);
+        console.log(`Conejos Antes: ${conejosActuales}`);
+
+        let value = calcularPoblacionFinal(conejosActuales);
+        months.conejosDespues.push(value);
+        console.log(`Conejos Despues: ${value}`);
+
+        months.ventas.push(ventas[i]);
+        //console.log(`Ventas: ${ventas[i]}`);
+
+        conejosActuales = value - ventas[i];
+    }
+
+    // console.log(`Numero de ventas: ${ventas.reduce((a, b) => a + b, 0)}`);
+    // console.log(`Ganancias: ${ventas.reduce((a, b) => a + b, 0) * 25}`);
+
+    function calcularPoblacionFinal(x0) {
+        let C = (1 / x0) - (1 / pmaximo);
+        // Calcular la población final
+        let poblacionFinal = pmaximo / (1 + pmaximo * C * Math.exp(-k * t * pmaximo));
+        poblacionFinal = poblacionFinal.toFixed(2)
+        //console.log(`Pre-venta: ${poblacionFinal}`);
+        return poblacionFinal;
+    }
+}
+
+function populateValues() {
+    rabbitNumber.innerText = data.cantidad;
+    rabbitFemale.innerText = data.conejas;  // Corregí la asignación de rabbitFemale
+    rabbitMale.innerText = data.conejos;
+    rabbitLimit.innerText = data.maximo;
+    rabbitSmall.innerText = data.gazapos;
+    rabbitRate.innerText = data.k;
+    rabbitMoney.innerText = data.money;
+
+    for (let i = 0; i < rabbitMonths.length; i++) {
+        rabbitMonths[i].setAttribute('data-quantity', months.conejosDespues[i]);
+        rabbitMonths[i].querySelector('.antes').innerText = months.conejosAntes[i].toFixed(2);
+        rabbitMonths[i].querySelector('.despues').innerText = months.conejosDespues[i];
+        rabbitMonths[i].querySelector('.venta').innerText = months.ventas[i];
+    }
+}
 
 
-        if (randomX > 140) {
-            console.log('this was reduced');
-            console.log(randomX);
-            randomX = randomX - 70;
+function ajustarConejos(cantidad) {
+    const conejos = rabbitContainer.querySelectorAll('img').length;
+
+    //console.log(`Cantidad de conejos: ${conejos}`);
+    let iteraciones = Math.abs(cantidad - conejos);
+
+
+    for (let i = 0; i < iteraciones; i++) {
+        if (cantidad > conejos) {
+            insertarConejos();
+        } else if (cantidad < conejos) {
+            quitarConejo();
+        } else {
+            break;
         }
+    }
 
-        if (randomY > 140) {
-            console.log('this was reduced');
-            console.log(randomY);
-            randomY = randomY - 70;
+}
+
+function insertarConejos() {
+    const newRabbit = document.createElement('img');
+    newRabbit.src = 'media/clean-rabbit.png';
+
+    const maxX = rabbitContainer.offsetWidth - 140;
+    const maxY = rabbitContainer.offsetHeight - 140;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    newRabbit.style.position = 'absolute';
+    newRabbit.style.left = (randomX + 70) + 'px';
+    newRabbit.style.top = (randomY + 70) + 'px';
+
+    if (Math.random() < 0.5) {
+        newRabbit.style.transform = 'scaleX(-1)';
+    }
+    rabbitContainer.appendChild(newRabbit);
+}
+
+function quitarConejo() {
+    const conejos = rabbitContainer.querySelectorAll('img');
+    if (conejos.length > 0) {
+        const ultimoConejo = conejos[conejos.length - 1];
+        ultimoConejo.remove();
+    }
+}
+
+rabbitMonths.forEach(month => {
+    month.addEventListener('click', (event) => {
+        // Si la clase "active" está presente, quítala; de lo contrario, agrégala.
+        if (month.classList.contains('active')) {
+            month.classList.remove('active');
+        } else {
+            // Elimina la clase "active" de todos los meses antes de agregarla al actual
+            rabbitMonths.forEach(otherMonth => {
+                otherMonth.classList.remove('active');
+            });
+
+            month.classList.add('active');
+            let quantity = month.getAttribute('data-quantity');
+            ajustarConejos(quantity);
         }
-        // Aplicar las coordenadas al estilo de posición
-        newRabbit.style.position = 'absolute';
-        newRabbit.style.left = randomX + 'px';
-        newRabbit.style.top = randomY + 'px';
-
-
-
-        // Invertir aleatoriamente horizontalmente
-        if (Math.random() < 0.5) {
-            newRabbit.style.transform = 'scaleX(-1)';
-        }
-
-        number.textContent = Number(number.textContent) + 1;
-
-
-
-        container.appendChild(newRabbit);
     });
 });
-
-
-mainButton.addEventListener('click', () => {
-    let numbers = document.querySelectorAll('.number');
-
-    //let p0 = Array.from(numbers).reduce((acc, current) => acc + Number(current.textContent), 0);
-    let p0 = 27;
-    let pmaximo = 70;
-
-    let k = 0.0252;
-    let constante = 1 / p0 - 1 / pmaximo;
-
-
-
-
-
-    for (let t = 1; t < 12; t++) {
-
-        let complex = Math.pow(Math.exp(1), (pmaximo * k * t));
-        let up = pmaximo * complex
-        let down = complex + (pmaximo * constante);
-
-        let x = up / down;
-        console.log(x);
-
-        monthsCalculations.push(Math.floor(x));
-
-    }
-    console.log(monthsCalculations);
-});
-
-

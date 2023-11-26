@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <link rel="icon" type="image/x-icon" href="media/rabbit-logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -22,64 +24,312 @@
 
 <body>
 
-    <!-- <nav>
-        <div>
-            <img src="" alt="" srcset="">
-        </div>
-    </nav> -->
+    <nav class="navbar">
+        <img src="media/rabbit-logo.png" alt="">
 
+        <i id="settings" class="settings fa-solid fa-sliders fa-2x"></i>
+    </nav>
     <main>
+        <div class="sidebar">
 
-        <div class="header">
-            <h1><i class="icon-hover fa-solid fa-tractor"></i> Granja Maria</h1>
-            <h2 id="monthName">Enero</h2>
+
+            <h1>Poblacion de Conejos</h1>
+
+            <span class="bold-text">Poblacion total</span>
+            <h2><span id="number">56</span> conejos <i class="fa-solid fa-horse-head"></i></h2>
+
+            <h3>Valores iniciales</h3>
+            <div class="stats-container">
+                <div>
+                    <span><i class="fa-solid fa-shield-heart"></i> Conejas</span>
+                    <span id="female">12</span>
+                </div>
+                <div>
+                    <span><i class="fa-brands fa-black-tie"></i> Conejos</span>
+                    <span id="male">12</span>
+                </div>
+                <div>
+                    <span><i class="fa-solid fa-carrot"></i> Gazapos </span>
+                    <span id="small">12</span>
+                </div>
+
+                <div>
+                    <span><i class="fa-solid fa-maximize"></i> Limitante </span>
+                    <span id="limit">70</span>
+                </div>
+
+                <div class="money-container">
+                    <span><i class="fa-solid fa-money-bill-wave"></i> Ganancias </span>
+                    <span id="money">70</span>
+                </div>
+
+            </div>
+
+            <div class="months-container">
+                <div>
+                    <h3>Enero</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Febrero</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Marzo</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Abril</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Mayo</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Junio</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Julio</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Agosto</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Septiembre</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Octubre</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Noviembre</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+                <div>
+                    <h3>Diciembre</h3>
+                    <span><i class="fa-solid fa-carrot"></i>
+                        <span class="antes">23 </span>
+                        Antes
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-carrot"></i>
+                        <span class="despues">23</span>
+                        Despues
+                    </span> <br>
+                    <span>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span class="venta">23</span>
+                        Ventas
+                    </span>
+                </div>
+
+
+            </div>
+
         </div>
 
-
-        <div class="farm">
-            <div class="female">
-
-                <h3>Conejos Madre: <span class="number" data-number="0">0</span></h3>
-                <div class="farm-container">
-                    <i class="more fa-solid fa-square-plus fa-2x"></i>
-                    <img src="media/rabbit.png" alt="">
-
-                    <img src="media/rabbit.png" alt="">
-
-                    <img src="media/rabbit.png" alt="">
-                </div>
-
-            </div>
-
-            <div class="small">
-
-                <h3>Conejos Pequeños: <span class="number" data-number="0">0</span></h3>
-                <div class="farm-container">
-                    <i class="more fa-solid fa-square-plus fa-2x"></i>
-                    <img src="media/rabbit.png" alt="">
-
-                </div>
-            </div>
-
-            <div class="big">
-
-                <h3>Conejos Grandes: <span class="number" data-number="0">0</span></h3>
-                <div class="farm-container">
-                    <i class="more fa-solid fa-square-plus fa-2x"></i>
-                    <img src="media/rabbit.png" alt="">
-
-                </div>
-            </div>
-
-
-
-            <input type="range" name="month" id="month" orient="vertical" min="0" max="120" value="90" step="10" />
-
+        <div class="rabbit-container" id="container">
 
         </div>
 
-        <button class="button" id="button">Calcular</button>
+        <div class="footer">
+            <span>Made with <i class=" red fa-solid fa-heart"></i> by <span> <a class="link" href="http://youtube.com"
+                        target="_blank">SrChezz</a></span></span>
 
+            <span class="rate"><i class="fa-solid fa-arrow-up-right-dots"></i> k: <span id="rate">0.252</span> </span>
+        </div>
+    </main>
+
+    <div id="setting-menu">
+        <form>
+            <div>
+                <label for="pm">Poblacion Maxima</label>
+                <input data-name="maximo" id="pm" type="text" value="70">
+            </div>
+            <div>
+                <label for="k">Valor de K</label>
+                <input data-name="k" id="k" type="text" value="0.025209231911707063">
+            </div>
+            <div>
+                <label for="conejas">Conejas</label>
+                <input data-name="conejas" id="conejas" type="text" value="12">
+            </div>
+            <div>
+                <label for="conejos">Conejos</label>
+                <input data-name="conejos" id="conejos" type="text" value="10">
+            </div>
+            <div>
+                <label for="gazapos">Gazapos</label>
+                <input data-name="gazapos" id="gazapos" type="text" value="5">
+            </div>
+            <div>
+                <label for="sales">Ventas</label>
+                <input data-name="ventas" id="sales" type="text" value="26, 24, 25, 22, 18, 45, 24, 26, 24, 22, 45, 19">
+            </div>
+
+
+            <button id="cal-button">Calcular</button>
+        </form>
+    </div>
 
     </main>
 
