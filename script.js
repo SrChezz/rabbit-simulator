@@ -48,7 +48,7 @@ calButton.addEventListener('click', (event) => {
     settingsMenu.style.display = 'none';
 
     calculateValues();
-    populateValues();
+
     ajustarConejos(data.cantidad);
 });
 
@@ -65,14 +65,14 @@ function calculateValues() {
 
     for (let i = 0; i < ventas.length; i++) {
         console.log(i + 1);
-        months.conejosAntes.push(conejosActuales);
+        months.conejosAntes[i] = conejosActuales;
         console.log(`Conejos Antes: ${conejosActuales}`);
 
         let value = calcularPoblacionFinal(conejosActuales);
-        months.conejosDespues.push(value);
+        months.conejosDespues[i] = value;
         console.log(`Conejos Despues: ${value}`);
 
-        months.ventas.push(ventas[i]);
+        months.ventas[i] = ventas[i];
         //console.log(`Ventas: ${ventas[i]}`);
 
         conejosActuales = value - ventas[i];
@@ -85,13 +85,16 @@ function calculateValues() {
         let C = (1 / x0) - (1 / pmaximo);
         // Calcular la población final
         let poblacionFinal = pmaximo / (1 + pmaximo * C * Math.exp(-k * t * pmaximo));
-        poblacionFinal = poblacionFinal.toFixed(2)
+        poblacionFinal = poblacionFinal
         //console.log(`Pre-venta: ${poblacionFinal}`);
         return poblacionFinal;
     }
+
+    populateValues();
 }
 
 function populateValues() {
+    //console.log(months);
     rabbitNumber.innerText = data.cantidad;
     rabbitFemale.innerText = data.conejas;  // Corregí la asignación de rabbitFemale
     rabbitMale.innerText = data.conejos;
@@ -103,7 +106,7 @@ function populateValues() {
     for (let i = 0; i < rabbitMonths.length; i++) {
         rabbitMonths[i].setAttribute('data-quantity', months.conejosDespues[i]);
         rabbitMonths[i].querySelector('.antes').innerText = months.conejosAntes[i].toFixed(2);
-        rabbitMonths[i].querySelector('.despues').innerText = months.conejosDespues[i];
+        rabbitMonths[i].querySelector('.despues').innerText = months.conejosDespues[i].toFixed(2);
         rabbitMonths[i].querySelector('.venta').innerText = months.ventas[i];
     }
 }

@@ -220,3 +220,21 @@ main {
     background-color: var(--color-white);
 
 }
+
+@media (max-width: 600px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        min-height: calc(100vh - var(--size-navbar));
+    }
+
+    .sidebar {
+        text-align: center;
+    }
+
+    .rabbit-container {
+        grid-row: 2/3;
+        min-height: 100vh;
+    }
+
+}
