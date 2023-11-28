@@ -141,15 +141,51 @@ function insertarConejos() {
     const randomX = Math.floor(Math.random() * maxX);
     const randomY = Math.floor(Math.random() * maxY);
 
+    newRabbit.setAttribute('draggable', false);
     newRabbit.style.position = 'absolute';
     newRabbit.style.left = (randomX + 70) + 'px';
     newRabbit.style.top = (randomY + 70) + 'px';
 
+
     if (Math.random() < 0.5) {
         newRabbit.style.transform = 'scaleX(-1)';
     }
+
+    // Agregar evento mousedown para iniciar el arrastre
+    newRabbit.addEventListener('mousedown', iniciarArrastre);
+
     rabbitContainer.appendChild(newRabbit);
 }
+
+function iniciarArrastre(event) {
+    const rabbit = event.target;
+
+    // Obtener la posición inicial del ratón con respecto al conejo
+    const offsetX = event.clientX - rabbit.getBoundingClientRect().left;
+    const offsetY = event.clientY - rabbit.getBoundingClientRect().top;
+
+    // Función para actualizar la posición del conejo durante el arrastre
+    function moverConejo(event) {
+        const x = event.clientX - offsetX;
+        const y = event.clientY - offsetY;
+
+        // Actualizar la posición del conejo
+        rabbit.style.left = x - 315 + 'px';
+        rabbit.style.top = y - 70 + 'px';
+    }
+
+    // Función para detener el arrastre
+    function detenerArrastre() {
+        // Eliminar los eventos de movimiento y liberación del mouse
+        document.removeEventListener('mousemove', moverConejo);
+        document.removeEventListener('mouseup', detenerArrastre);
+    }
+
+    // Agregar eventos para mover y detener el arrastre
+    document.addEventListener('mousemove', moverConejo);
+    document.addEventListener('mouseup', detenerArrastre);
+}
+
 
 function quitarConejo() {
     const conejos = rabbitContainer.querySelectorAll('img');
